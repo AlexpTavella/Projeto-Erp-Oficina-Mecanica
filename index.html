@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ERP - Oficina Mecânica</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- Barra Lateral -->
+
+  <div id="overlay" class="overlay" onclick="closeMenu()"></div>
+
+  <div id="sidebar" class="sidebar hidden-mobile">
+    <div style="height:80px;display:flex;align-items:center;justify-content:center;background:#020617">
+      <img src="Imagens/imagem_2025-09-13_193605669-removebg-preview.png" style="height:50px;margin-right:10px">
+      <!-- <h1>Isaias Motos</h1> -->
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="#" onclick="showSection('dashboard')"><i class="fa-solid fa-bars"></i>Dashboard</a></li>
+        <li><a href="#" onclick="showSection('clientes')"><i class="fa-solid fa-users icon-black"></i>Clientes</a></li>
+        <li><a href="#" onclick="showSection('veiculos')"><i class="fa-solid fa-motorcycle"></i>Motos</a></li>
+        <li><a href="#" onclick="showSection('pecas')"><i class="fa-solid fa-gear"></i>Peças</a></li>
+        <li><a href="#" onclick="showSection('servicos')"><i class="fa-solid fa-wrench"></i>Serviços</a></li>
+        <li><a href="#" onclick="showSection('ordens')"><i class="fa-solid fa-clipboard"></i>Ordens</a></li>
+        <li><a href="#" onclick="showSection('configuracoes')"><i class="fa-solid fa-gear"></i>Configurações</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="main-content">
+
+    <header class="main-header">
+      <button class="menu-btn" onclick="toggleMenu()">☰</button>
+      <h2 id="page-title">Oficina Digital</h2>
+      <span id="current-date"></span>
+    </header>
+
+    <main>
+
+
+
+
+
+      <div id="dashboard-section" class="section">
+        <div class="grid grid-5 dashboard-cards">
+
+          <div class="card dashboard-card">
+            <div class="icon blue"><i class="fa-solid fa-users"></i></div>
+            <div class="info">
+              <span>CLIENTES</span>
+              <h2 id="total-clientes">0</h2>
+            </div>
+          </div>
+
+          <div class="card dashboard-card">
+            <div class="icon green"><i class="fa-solid fa-motorcycle"></i></div>
+            <div class="info">
+              <span>MOTOS</span>
+              <h2 id="total-veiculos">0</h2>
+            </div>
+          </div>
+
+          <div class="card dashboard-card">
+            <div class="icon purple"><i class="fa-solid fa-gear"></i></div>
+            <div class="info">
+              <span>SERVIÇOS</span>
+              <h2 id="total-servicos">0</h2>
+            </div>
+          </div>
+
+          <div class="card dashboard-card">
+            <div class="icon yellow"><i class="fa-solid fa-file-lines"></i></div>
+            <div class="info">
+              <span>ORDENS</span>
+              <h2 id="total-ordens-abertas">0</h2>
+            </div>
+          </div>
+
+          <div class="card dashboard-card">
+            <div class="icon red"><i class="fa-solid fa-wrench"></i></div>
+            <div class="info">
+              <span>PEÇAS</span>
+              <h2 id="total-pecas">0</h2>
+            </div>
+          </div>
+        </div>
+
+        <div id="Conteudo">
+
+        <div id="ContCard" class="card">
+          <h3> <i style="margin-right: 7px; color: rgb(199, 199, 0);" class="far fa-clock"></i>Ordens Recentes</h3>
+          <br><hr><br>
+          <h4>Nenhuma ordem de serviço encontrada</h4>
+        </div>
+
+        <div id="ContCard" class="card">
+          <h3> <i style="margin-right: 7px; color: rgb(33, 199, 0);" class="fas fa-chart-line"></i>Estatísticas do Mês</h3>
+          <br><hr><br>
+
+          <div id="DashEstatistica">
+          <h4>Serviços concluidos</h4>
+          <h4 style="color: rgb(0, 95, 204);">5</h4>
+          </div>
+          <div id="DashEstatistica">
+          <h4>Peças Utilizadas</h4>
+          <h4 style="color: rgb(0, 95, 204);">10</h4>
+          </div>
+          <div id="DashEstatistica">
+          <h4>Receita Total</h4>
+          <h4 style="color: rgb(58, 204, 0);">R$ 1250,00</h4>
+          </div>
+
+        </div>
+
+
+      </div>
+
+</div>
+
+
+
+
+
+      <div id="clientes-section" class="section hidden">
+        <div class="card">
+
+          <div id="TitleCard">
+          <h3>Clientes</h3>
+          <button class="btn-blue" onclick="openClienteModal()">Novo Cliente</button>
+          </div>
+
+          <div style="margin-top: 5px;" id="TitleCard">
+          <input id="search-clientes" placeholder="Buscar Clientes...">
+          <button id="btnPesquisa"><i class="fas fa-search"></i></button>
+          </div>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Telefone</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="clientes-table"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div id="veiculos-section" class="section hidden">
+        <div class="card">
+
+          <div id="TitleCard">
+            <h3>Motos</h3>
+            <button class="btn-blue" onclick="openClienteModal()">Nova Moto</button>
+            </div>
+  
+            <div style="margin-top: 5px;" id="TitleCard">
+            <input id="search-clientes" placeholder="Buscar Motos...">
+            <button id="btnPesquisa"><i class="fas fa-search"></i></button>
+            </div>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Placa</th>
+                <th>Marca</th>
+                <th>Ano</th>
+                <th>Proprietário</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="veiculos-table"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div id="pecas-section" class="section hidden">
+        <div class="card">
+
+          <div id="TitleCard">
+            <h3>Peças</h3>
+            <button class="btn-blue" onclick="openClienteModal()">Nova Peça</button>
+            </div>
+  
+            <div style="margin-top: 5px;" id="TitleCard">
+            <input id="search-clientes" placeholder="Buscar Peças...">
+            <button id="btnPesquisa"><i class="fas fa-search"></i></button>
+            </div>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Código</th>
+                <th>Nome</th>
+                <th>Marca</th>
+                <th>Preço</th>
+                <th>Estoque</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="pecas-table"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div id="servicos-section" class="section hidden">
+        <div class="card">
+
+          <div id="TitleCard">
+            <h3>Serviço</h3>
+            <button class="btn-blue" onclick="openClienteModal()">Novo Serviço</button>
+            </div>
+  
+            <div style="margin-top: 5px;" id="TitleCard">
+            <input id="search-clientes" placeholder="Buscar Serviços...">
+            <button id="btnPesquisa"><i class="fas fa-search"></i></button>
+            </div>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th>Preço</th>
+                <th>Duração</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="servicos-table"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div id="ordens-section" class="section hidden">
+        <div class="card">
+
+          <div id="TitleCard">
+            <h3>Ordens</h3>
+            <button class="btn-blue" onclick="openClienteModal()">Nova Ordem</button>
+            </div>
+  
+            <div style="margin-top: 5px;" id="TitleCard">
+            <input id="search-clientes" placeholder="Buscar Ordens...">
+            <button id="btnPesquisa"><i class="fas fa-search"></i></button>
+            </div>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Nº</th>
+                <th>Cliente</th>
+                <th>Moto</th>
+                <th>Status</th>
+                <th>Data</th>
+                <th>Total</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="ordens-table"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div id="configuracoes-section" class="section hidden">
+        <div class="card">
+          <h3>Usuário</h3>
+          <button class="btn-blue" onclick="exportBackup()">Trocar Senha</button>
+          <button class="btn-blue" onclick="exportBackup()">Trocar de Conta</button>
+          <button class="btn-red" onclick="confirmClearDatabase()">Logout</button>
+          <br><br><br>
+          <h3>Backup & Dados</h3>
+          <button class="btn-blue" onclick="exportBackup()">Exportar Backup</button>
+          <button class="btn-green" onclick="importBackup()">Importar Backup</button>
+          <button class="btn-red" onclick="confirmClearDatabase()">Limpar Banco de Dados</button>
+          <br><br>
+          <div style="color: rgb(165, 135, 0); border-style: solid; border-width: thin; padding: 10px;">
+            <h4><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Informações Importantes</h4>
+            Exporte regularmente seus dados como backup <br>
+            Importar substituirá todos os dados atuais <br>
+            Limpar banco é uma ação IRREVERSÍVEL <br>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script>
+    function showSection(section) {
+      document.querySelectorAll('.section').forEach(s => s.classList.add('hidden'))
+      document.getElementById(section + '-section').classList.remove('hidden')
+      closeMenu()
+    }
+
+    function toggleMenu() {
+      const sidebar = document.getElementById('sidebar')
+      const overlay = document.getElementById('overlay')
+
+      sidebar.classList.toggle('active')
+      overlay.classList.toggle('active')
+    }
+
+    function closeMenu() {
+      document.getElementById('sidebar').classList.remove('active')
+      document.getElementById('overlay').classList.remove('active')
+    }
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768) {
+        document.getElementById('sidebar').classList.remove('active')
+        document.getElementById('overlay').classList.remove('active')
+      }
+    })
+
+    window.onload = () => {
+      if (window.innerWidth <= 768) {
+        document.getElementById('sidebar').classList.remove('active')
+      }
+    }
+  </script>
+
+</body>
+
+</html>
