@@ -255,7 +255,8 @@
   th {
     background: #f8fafc;
     font-size: 12px;
-    text-transform: uppercase
+    text-transform: uppercase;
+    text-align: left;
   }
 
   tr:hover {
