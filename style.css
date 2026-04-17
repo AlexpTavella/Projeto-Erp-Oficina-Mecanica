@@ -362,6 +362,16 @@
     color: #16a34a;
   }
 
+  .icon.purple {
+    background: #fcdcfc;
+    color: #b80fce;
+  }
+
+  .icon.yellow {
+    background: #fffcd7;
+    color: #b8d610;
+  }
+
   .icon.red {
     background: #fee2e2;
     color: #dc2626;
