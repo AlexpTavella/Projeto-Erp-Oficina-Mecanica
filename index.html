@@ -30,6 +30,7 @@
         <li><a href="#" onclick="showSection('servicos')"><i class="fa-solid fa-wrench"></i>Serviços</a></li>
         <li><a href="#" onclick="showSection('ordens')"><i class="fa-solid fa-clipboard"></i>Ordens</a></li>
         <li><a href="#" onclick="showSection('configuracoes')"><i class="fa-solid fa-gear"></i>Configurações</a></li>
+        <li><a href="#" onclick="showSection('usuario')"><i class="fa-solid fa-user"></i>Usuário</a></li>
       </ul>
     </nav>
   </div>
@@ -43,9 +44,6 @@
     </header>
 
     <main>
-
-
-
 
 
       <div id="dashboard-section" class="section">
@@ -124,41 +122,74 @@
 
 </div>
 
-
-
-
-
       <div id="clientes-section" class="section hidden">
         <div class="card">
 
           <div id="TitleCard">
           <h3>Clientes</h3>
-          <button class="btn-blue" onclick="openClienteModal()">Novo Cliente</button>
+          <button class="btn-blue" href="#" onclick="showSection('CadastroCliente')">Novo Cliente</button>
           </div>
 
-          <div style="margin-top: 5px;" id="TitleCard">
-          <input id="search-clientes" placeholder="Buscar Clientes...">
-          <button id="btnPesquisa"><i class="fas fa-search"></i></button>
+          <div class="BarraPesquisa">
+            <input type="text" placeholder="Buscar clientes cadastrados..." id="search-input">
+            <button class="search-btn">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
           </div>
 
+          <div id="TabelaDados">
           <table>
             <thead>
               <tr>
-                <th>Nome</th>
+                <th>Nome Completo</th>
                 <th>Email</th>
                 <th>Telefone</th>
-                <th>Ações</th>
+                <th>CPF</th>
+                <th>Endereço</th>
+                <th>Bairro</th>
+                <th>Cidade</th>
+                <th>Estado</th>
+                <th>CEP</th>
               </tr>
             </thead>
               <tr>
-                <td>Alex Pedroso Tavella aaaaa aaaaaaaaa</td>
-                <td>alex@gmail.com</td>
+                <td>Alex Pedroso Tavella</td>
+                <td>alextavella@gmail.com</td>
                 <td>15 9999999</td>
-                <td>Exclusão do banco de dados</td>
+                <td>12345678910</td>
+                <td>Rua José Tavares, 123</td>
+                <td>Jardim Juliana</td>
+                <td>Tatuí</td>
+                <td>São Paulo</td>
+                <td>1828000</td>
+              </tr>
+              <tr>
+                <td>Felipe Pedroso Tavella</td>
+                <td>felipetavella@gmail.com</td>
+                <td>15 88888888</td>
+                <td>12345678910</td>
+                <td>Rua José Tavares, 123</td>
+                <td>Jardim Juliana</td>
+                <td>Tatuí</td>
+                <td>São Paulo</td>
+                <td>1828000</td>
+              </tr>
+              <tr>
+                <td>Luiz Fernando Bueno</td>
+                <td>luizboeno@gmail.com</td>
+                <td>15 77777777</td>
+                <td>12345678910</td>
+                <td>Rua José Tavares, 123</td>
+                <td>Jardim Juliana</td>
+                <td>Tatuí</td>
+                <td>São Paulo</td>
+                <td>1828000</td>
               </tr>
 
             <tbody id="clientes-table"></tbody>
           </table>
+        </div>
+
         </div>
       </div>
 
@@ -170,9 +201,11 @@
             <button class="btn-blue" onclick="openClienteModal()">Nova Moto</button>
             </div>
   
-            <div style="margin-top: 5px;" id="TitleCard">
-            <input id="search-clientes" placeholder="Buscar Motos...">
-            <button id="btnPesquisa"><i class="fas fa-search"></i></button>
+            <div class="BarraPesquisa">
+              <input type="text" placeholder="Buscar motos cadastrados..." id="search-input">
+              <button class="search-btn">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
             </div>
 
           <table>
@@ -198,9 +231,11 @@
             <button class="btn-blue" onclick="openClienteModal()">Nova Peça</button>
             </div>
   
-            <div style="margin-top: 5px;" id="TitleCard">
-            <input id="search-clientes" placeholder="Buscar Peças...">
-            <button id="btnPesquisa"><i class="fas fa-search"></i></button>
+            <div class="BarraPesquisa">
+              <input type="text" placeholder="Buscar peças cadastradas..." id="search-input">
+              <button class="search-btn">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
             </div>
 
           <table>
@@ -227,9 +262,11 @@
             <button class="btn-blue" onclick="openClienteModal()">Novo Serviço</button>
             </div>
   
-            <div style="margin-top: 5px;" id="TitleCard">
-            <input id="search-clientes" placeholder="Buscar Serviços...">
-            <button id="btnPesquisa"><i class="fas fa-search"></i></button>
+            <div class="BarraPesquisa">
+              <input type="text" placeholder="Buscar serviços cadastrados..." id="search-input">
+              <button class="search-btn">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
             </div>
 
           <table>
@@ -255,9 +292,11 @@
             <button class="btn-blue" onclick="openClienteModal()">Nova Ordem</button>
             </div>
   
-            <div style="margin-top: 5px;" id="TitleCard">
-            <input id="search-clientes" placeholder="Buscar Ordens...">
-            <button id="btnPesquisa"><i class="fas fa-search"></i></button>
+            <div class="BarraPesquisa">
+              <input type="text" placeholder="Buscar ordens cadastrados..." id="search-input">
+              <button class="search-btn">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
             </div>
 
           <table>
@@ -279,12 +318,11 @@
 
       <div id="configuracoes-section" class="section hidden">
         <div class="card">
-          <h3>Usuário</h3>
-          <button class="btn-blue" onclick="exportBackup()">Trocar Senha</button>
-          <button class="btn-blue" onclick="exportBackup()">Trocar de Conta</button>
-          <button class="btn-red" onclick="confirmClearDatabase()">Logout</button>
-          <br><br><br>
-          <h3>Backup & Dados</h3>
+
+          <div id="TitleCard" style="margin-bottom: 15px;">
+          <h3>Configurações</h3>
+          </div>
+          <h3 style="margin-bottom:10px;">Backup & Dados</h3>
           <button class="btn-blue" onclick="exportBackup()">Exportar Backup</button>
           <button class="btn-green" onclick="importBackup()">Importar Backup</button>
           <button class="btn-red" onclick="confirmClearDatabase()">Limpar Banco de Dados</button>
@@ -293,10 +331,141 @@
             <h4><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Informações Importantes</h4>
             Exporte regularmente seus dados como backup <br>
             Importar substituirá todos os dados atuais <br>
-            Limpar banco é uma ação IRREVERSÍVEL <br>
+            Limpar banco é uma ação IRREVERSÍVEL <br><br>
           </div>
         </div>
       </div>
+
+
+      <div id="usuario-section" class="section hidden">
+        <div class="card">
+
+          <div id="TitleCard" style="margin-bottom: 15px;">
+          <h3>Usuário</h3>
+          </div>
+
+          <div id="userinfo">
+          <p>Usuário: Alex Tavella</p>
+          <p>Perfil: Admin</p>
+          <p>Email: alextavella@gmail.com</p>
+          <p>Senha expira em: 22/09/26</p>
+          </div>
+
+          <button class="btn-green" onclick="exportBackup()">Trocar Senha</button>
+          <button class="btn-blue" onclick="exportBackup()">Trocar de Conta</button>
+          <button class="btn-red" onclick="confirmClearDatabase()">Logout</button>
+  
+        </div>
+      </div>
+
+
+      <!-- ---------------- CADASTROS ---------------- -->
+
+      <div id="CadastroCliente-section" class="section hidden">
+        <div class="card form-card">
+      
+          <div class="form-header">
+            <h2>Cadastrar Cliente</h2>
+            <p>Preencha as informações abaixo</p>
+          </div>
+      
+          <form id="cliente-form">
+      
+            <div class="form-grid">
+      
+              <div class="form-group">
+                <label>Nome Completo</label>
+                <input type="text" id="cliente-nome" required>
+              </div>
+      
+              <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="cliente-email">
+              </div>
+      
+              <div class="form-group">
+                <label>Telefone</label>
+                <input type="text" id="cliente-telefone">
+              </div>
+      
+              <div class="form-group">
+                <label>CPF</label>
+                <input type="text" id="cliente-cpf">
+              </div>
+      
+              <div class="form-group">
+                <label>Endereço</label>
+                <input type="text" id="cliente-endereco">
+              </div>
+
+              <div class="form-group">
+                <label>Bairro</label>
+                <input type="text" id="cliente-endereco">
+              </div>
+      
+              <div class="form-group">
+                <label>Cidade</label>
+                <input type="text" id="cliente-cidade">
+              </div>
+      
+              <div class="form-group">
+                <label>Estado</label>
+                <input type="text" id="cliente-estado">
+              </div>
+      
+              <div class="form-group">
+                <label>CEP</label>
+                <input type="text" id="cliente-cep">
+              </div>
+      
+            </div>
+      
+            <div class="form-actions">
+              <button type="button" class="btn-red" onclick="showSection('clientes')">
+                Cancelar
+              </button>
+
+              <button type="reset" class="btn-blue">
+                Limpar
+              </button>
+      
+              <button type="submit" class="btn-green">
+                Salvar Cliente
+              </button>
+            </div>
+      
+          </form>
+      
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     </main>
   </div>
