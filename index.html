@@ -11,7 +11,7 @@
 
 <body>
 
-<!-- Barra Lateral -->
+  <!-- ------------------------------------------------ Barra Lateral ------------------------------------------------ -->
 
   <div id="overlay" class="overlay" onclick="closeMenu()"></div>
 
@@ -25,7 +25,7 @@
       <ul>
         <li><a href="#" onclick="showSection('dashboard')"><i class="fa-solid fa-bars"></i>Dashboard</a></li>
         <li><a href="#" onclick="showSection('clientes')"><i class="fa-solid fa-users icon-black"></i>Clientes</a></li>
-        <li><a href="#" onclick="showSection('veiculos')"><i class="fa-solid fa-motorcycle"></i>Motos</a></li>
+        <li><a href="#" onclick="showSection('motos')"><i class="fa-solid fa-motorcycle"></i>Motos</a></li>
         <li><a href="#" onclick="showSection('pecas')"><i class="fa-solid fa-gear"></i>Peças</a></li>
         <li><a href="#" onclick="showSection('servicos')"><i class="fa-solid fa-wrench"></i>Serviços</a></li>
         <li><a href="#" onclick="showSection('ordens')"><i class="fa-solid fa-clipboard"></i>Ordens</a></li>
@@ -34,6 +34,9 @@
       </ul>
     </nav>
   </div>
+
+  <!-- --------------------------------------------------------------------------------------------------------------- -->
+
 
   <div class="main-content">
 
@@ -44,7 +47,6 @@
     </header>
 
     <main>
-
 
       <div id="dashboard-section" class="section">
         <div class="grid grid-5 dashboard-cards">
@@ -61,7 +63,7 @@
             <div class="icon green"><i class="fa-solid fa-motorcycle"></i></div>
             <div class="info">
               <span>MOTOS</span>
-              <h2 id="total-veiculos">0</h2>
+              <h2 id="total-motos">0</h2>
             </div>
           </div>
 
@@ -92,42 +94,45 @@
 
         <div id="Conteudo">
 
-        <div id="ContCard" class="card">
-          <h3> <i style="margin-right: 7px; color: rgb(199, 199, 0);" class="far fa-clock"></i>Ordens Recentes</h3>
-          <br><hr><br>
-          <h4>Nenhuma ordem de serviço encontrada</h4>
+          <div id="ContCard" class="card">
+            <h3> <i style="margin-right: 7px; color: rgb(199, 199, 0);" class="far fa-clock"></i>Ordens Recentes</h3>
+            <br>
+            <hr><br>
+            <h4>Nenhuma ordem de serviço encontrada</h4>
+          </div>
+
+          <div id="ContCard" class="card">
+            <h3> <i style="margin-right: 7px; color: rgb(33, 199, 0);" class="fas fa-chart-line"></i>Estatísticas do Mês
+            </h3>
+            <br>
+            <hr><br>
+
+            <div id="DashEstatistica">
+              <h4>Serviços concluidos</h4>
+              <h4 style="color: rgb(0, 95, 204);">5</h4>
+            </div>
+            <div id="DashEstatistica">
+              <h4>Peças Utilizadas</h4>
+              <h4 style="color: rgb(0, 95, 204);">10</h4>
+            </div>
+            <div id="DashEstatistica">
+              <h4>Receita Total</h4>
+              <h4 style="color: rgb(58, 204, 0);">R$ 1250,00</h4>
+            </div>
+
+          </div>
         </div>
-
-        <div id="ContCard" class="card">
-          <h3> <i style="margin-right: 7px; color: rgb(33, 199, 0);" class="fas fa-chart-line"></i>Estatísticas do Mês</h3>
-          <br><hr><br>
-
-          <div id="DashEstatistica">
-          <h4>Serviços concluidos</h4>
-          <h4 style="color: rgb(0, 95, 204);">5</h4>
-          </div>
-          <div id="DashEstatistica">
-          <h4>Peças Utilizadas</h4>
-          <h4 style="color: rgb(0, 95, 204);">10</h4>
-          </div>
-          <div id="DashEstatistica">
-          <h4>Receita Total</h4>
-          <h4 style="color: rgb(58, 204, 0);">R$ 1250,00</h4>
-          </div>
-
-        </div>
-
-
       </div>
 
-</div>
+
+
 
       <div id="clientes-section" class="section hidden">
         <div class="card">
 
           <div id="TitleCard">
-          <h3>Clientes</h3>
-          <button class="btn-blue" href="#" onclick="showSection('CadastroCliente')">Novo Cliente</button>
+            <h3>Clientes</h3>
+            <button class="btn-blue" href="#" onclick="showSection('CadastroCliente')">Novo Cliente</button>
           </div>
 
           <div class="BarraPesquisa">
@@ -138,23 +143,23 @@
           </div>
 
           <div id="TabelaDados">
-          <table>
-            <thead>
-              <tr>
-                <th>Código</th>
-                <th>Nome Completo</th>
-                <th>Email</th>
-                <th>Telefone</th>
-                <th>CPF</th>
-                <th>Endereço</th>
-                <th>Bairro</th>
-                <th>Cidade</th>
-                <th>Estado</th>
-                <th>CEP</th>
-                <th></th>
-                <th></th>
-              </tr>
-            </thead>
+            <table>
+              <thead>
+                <tr>
+                  <th>Código</th>
+                  <th>Nome Completo</th>
+                  <th>Email</th>
+                  <th>Telefone</th>
+                  <th>CPF</th>
+                  <th>Endereço</th>
+                  <th>Bairro</th>
+                  <th>Cidade</th>
+                  <th>Estado</th>
+                  <th>CEP</th>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </thead>
               <tr>
                 <td>1</td>
                 <td>Alex Pedroso Tavella</td>
@@ -198,36 +203,77 @@
                 <td><a href="#"><i style="color: #dc2626;" class="fa-solid fa-trash"></i></a></td>
               </tr>
 
-            <tbody id="clientes-table"></tbody>
-          </table>
-        </div>
-
+              <tbody id="clientes-table"></tbody>
+            </table>
+          </div>
         </div>
       </div>
 
-      <div id="veiculos-section" class="section hidden">
+
+
+
+      <div id="motos-section" class="section hidden">
         <div class="card">
 
           <div id="TitleCard">
             <h3>Motos</h3>
-            <button class="btn-blue" onclick="openClienteModal()">Nova Moto</button>
-            </div>
-  
-            <div class="BarraPesquisa">
-              <input type="text" placeholder="Buscar motos cadastrados..." id="search-input">
-              <button class="search-btn">
-                <i class="fa-solid fa-magnifying-glass"></i>
-              </button>
-            </div>
+            <button class="btn-blue" href="#" onclick="showSection('CadastroMoto')">Nova Moto</button>
+          </div>
+
+          <div class="BarraPesquisa">
+            <input type="text" placeholder="Buscar motos cadastrados..." id="search-input">
+            <button class="search-btn">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </div>
 
           <table>
             <thead>
               <tr>
+                <th>Código</th>
                 <th>Placa</th>
+                <th>Modelo</th>
                 <th>Marca</th>
                 <th>Ano</th>
                 <th>Proprietário</th>
-                <th>Ações</th>
+                <th>Telefone</th>
+                <th>E-mail</th>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>DSX2495</td>
+                <td>Kawasaki Ninja</td>
+                <td>Yamaha</td>
+                <td>2024</td>
+                <td>José Antonio Silva</td>
+                <td>(15)997645852</td>
+                <td>joseant241@gmail.com</td>
+                <td><a href="#"><i style="color: #2563eb;" class="fa-solid fa-pencil"></i></a></td>
+                <td><a href="#"><i style="color: #dc2626;" class="fa-solid fa-trash"></i></a></td>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>DSX2495</td>
+                <td>Kawasaki Ninja</td>
+                <td>Yamaha</td>
+                <td>2024</td>
+                <td>José Antonio Silva</td>
+                <td>(15)997645852</td>
+                <td>joseant241@gmail.com</td>
+                <td><a href="#"><i style="color: #2563eb;" class="fa-solid fa-pencil"></i></a></td>
+                <td><a href="#"><i style="color: #dc2626;" class="fa-solid fa-trash"></i></a></td>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>DSX2495</td>
+                <td>Kawasaki Ninja</td>
+                <td>Yamaha</td>
+                <td>2024</td>
+                <td>José Antonio Silva</td>
+                <td>(15)997645852</td>
+                <td>joseant241@gmail.com</td>
+                <td><a href="#"><i style="color: #2563eb;" class="fa-solid fa-pencil"></i></a></td>
+                <td><a href="#"><i style="color: #dc2626;" class="fa-solid fa-trash"></i></a></td>
               </tr>
             </thead>
             <tbody id="veiculos-table"></tbody>
@@ -235,20 +281,23 @@
         </div>
       </div>
 
+
+
+
       <div id="pecas-section" class="section hidden">
         <div class="card">
 
           <div id="TitleCard">
             <h3>Peças</h3>
             <button class="btn-blue" onclick="openClienteModal()">Nova Peça</button>
-            </div>
-  
-            <div class="BarraPesquisa">
-              <input type="text" placeholder="Buscar peças cadastradas..." id="search-input">
-              <button class="search-btn">
-                <i class="fa-solid fa-magnifying-glass"></i>
-              </button>
-            </div>
+          </div>
+
+          <div class="BarraPesquisa">
+            <input type="text" placeholder="Buscar peças cadastradas..." id="search-input">
+            <button class="search-btn">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </div>
 
           <table>
             <thead>
@@ -272,14 +321,14 @@
           <div id="TitleCard">
             <h3>Serviço</h3>
             <button class="btn-blue" onclick="openClienteModal()">Novo Serviço</button>
-            </div>
-  
-            <div class="BarraPesquisa">
-              <input type="text" placeholder="Buscar serviços cadastrados..." id="search-input">
-              <button class="search-btn">
-                <i class="fa-solid fa-magnifying-glass"></i>
-              </button>
-            </div>
+          </div>
+
+          <div class="BarraPesquisa">
+            <input type="text" placeholder="Buscar serviços cadastrados..." id="search-input">
+            <button class="search-btn">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </div>
 
           <table>
             <thead>
@@ -302,14 +351,14 @@
           <div id="TitleCard">
             <h3>Ordens</h3>
             <button class="btn-blue" onclick="openClienteModal()">Nova Ordem</button>
-            </div>
-  
-            <div class="BarraPesquisa">
-              <input type="text" placeholder="Buscar ordens cadastrados..." id="search-input">
-              <button class="search-btn">
-                <i class="fa-solid fa-magnifying-glass"></i>
-              </button>
-            </div>
+          </div>
+
+          <div class="BarraPesquisa">
+            <input type="text" placeholder="Buscar ordens cadastrados..." id="search-input">
+            <button class="search-btn">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </div>
 
           <table>
             <thead>
@@ -332,7 +381,7 @@
         <div class="card">
 
           <div id="TitleCard" style="margin-bottom: 15px;">
-          <h3>Configurações</h3>
+            <h3>Configurações</h3>
           </div>
           <h3 style="margin-bottom:10px;">Backup & Dados</h3>
           <button class="btn-blue" onclick="exportBackup()">Exportar Backup</button>
@@ -353,58 +402,60 @@
         <div class="card">
 
           <div id="TitleCard" style="margin-bottom: 15px;">
-          <h3>Usuário</h3>
+            <h3>Usuário</h3>
           </div>
 
           <div id="userinfo">
-          <p>Usuário: Alex Tavella</p>
-          <p>Perfil: Admin</p>
-          <p>Email: alextavella@gmail.com</p>
-          <p>Senha expira em: 22/09/26</p>
+            <p>Usuário: Alex Tavella</p>
+            <p>Perfil: Admin</p>
+            <p>Email: alextavella@gmail.com</p>
+            <p>Senha expira em: 22/09/26</p>
           </div>
 
           <button class="btn-green" onclick="exportBackup()">Trocar Senha</button>
           <button class="btn-blue" onclick="exportBackup()">Trocar de Conta</button>
           <button class="btn-red" onclick="confirmClearDatabase()">Logout</button>
-  
+
         </div>
       </div>
 
 
-      <!-- ---------------- CADASTROS ---------------- -->
+      <!-- ------------------------------------------------ CADASTROS ------------------------------------------------ -->
+
+      <!-- ----- Cliente ----- -->
 
       <div id="CadastroCliente-section" class="section hidden">
         <div class="card form-card">
-      
+
           <div class="form-header">
             <h2>Cadastrar Cliente</h2>
             <p>Preencha as informações abaixo</p>
           </div>
-      
+
           <form id="cliente-form">
-      
+
             <div class="form-grid">
-      
+
               <div class="form-group">
                 <label>Nome Completo</label>
                 <input type="text" id="cliente-nome" required>
               </div>
-      
+
               <div class="form-group">
                 <label>Email</label>
                 <input type="email" id="cliente-email">
               </div>
-      
+
               <div class="form-group">
                 <label>Telefone</label>
                 <input type="text" id="cliente-telefone">
               </div>
-      
+
               <div class="form-group">
                 <label>CPF</label>
                 <input type="text" id="cliente-cpf">
               </div>
-      
+
               <div class="form-group">
                 <label>Endereço</label>
                 <input type="text" id="cliente-endereco">
@@ -414,24 +465,24 @@
                 <label>Bairro</label>
                 <input type="text" id="cliente-endereco">
               </div>
-      
+
               <div class="form-group">
                 <label>Cidade</label>
                 <input type="text" id="cliente-cidade">
               </div>
-      
+
               <div class="form-group">
                 <label>Estado</label>
                 <input type="text" id="cliente-estado">
               </div>
-      
+
               <div class="form-group">
                 <label>CEP</label>
                 <input type="text" id="cliente-cep">
               </div>
-      
+
             </div>
-      
+
             <div class="form-actions">
               <button type="button" class="btn-red" onclick="showSection('clientes')">
                 Cancelar
@@ -440,45 +491,83 @@
               <button type="reset" class="btn-blue">
                 Limpar
               </button>
-      
+
               <button type="submit" class="btn-green">
                 Salvar Cliente
               </button>
             </div>
-      
+
           </form>
-      
+
         </div>
       </div>
 
 
+      <div id="CadastroMoto-section" class="section hidden">
+        <div class="card form-card">
 
+          <div class="form-header">
+            <h2>Cadastrar Motos</h2>
+            <p>Preencha as informações abaixo</p>
+          </div>
 
+          <form id="cliente-form">
 
+            <div class="form-grid">
+              <div class="form-group">
+                <label>Placa</label>
+                <input type="text" id="moto-placa" required>
+              </div>
 
+              <div class="form-group">
+                <label>Modelo</label>
+                <input type="text" id="moto-modelo">
+              </div>
 
+              <div class="form-group">
+                <label>Marca</label>
+                <input type="text" id="moto-marca">
+              </div>
 
+              <div class="form-group">
+                <label>Ano</label>
+                <input type="text" id="moto-ano">
+              </div>
 
+              <div class="form-group">
+                <label>Proprietário</label>
+                <input type="text" id="moto-proprierario-nome">
+              </div>
+              <div class="form-group">
+                <label>Telefone</label>
+                <input type="text" id="moto-proprierario-nome">
+              </div>
+              <div class="form-group">
+                <label>E-mail</label>
+                <input type="text" id="moto-proprierario-nome">
+              </div>
+            </div>
 
+            <div class="form-actions">
+              <button type="button" class="btn-red" onclick="showSection('motos')">
+                Cancelar
+              </button>
 
+              <button type="reset" class="btn-blue">
+                Limpar
+              </button>
 
+              <button type="submit" class="btn-green">
+                Salvar Cliente
+              </button>
+            </div>
 
+          </form>
 
+        </div>
+      </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+      
     </main>
   </div>
 
@@ -516,7 +605,6 @@
     }
   </script>
 
-  
 </body>
 
 </html>
