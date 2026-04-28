@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ERP - Oficina Mecânica</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- ------------------------------------------------ Barra Lateral ------------------------------------------------ -->
+
+  <div id="overlay" class="overlay" onclick="closeMenu()"></div>
+
+  <div id="sidebar" class="sidebar hidden-mobile">
+    <div style="height:80px;display:flex;align-items:center;justify-content:center;background:#020617">
+      <img src="../Imagens/IsaiasmotosW.png" style="height:50px;margin-right:10px">
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="#" onclick="showSection('dashboard')"><i class="fa-solid fa-bars"></i>Dashboard</a></li>
+        <li><a href="#" onclick="showSection('clientes')"><i class="fa-solid fa-users icon-black"></i>Clientes</a></li>
+        <li><a href="#" onclick="showSection('motos')"><i class="fa-solid fa-motorcycle"></i>Motos</a></li>
+        <li><a href="#" onclick="showSection('pecas')"><i class="fa-solid fa-gear"></i>Peças</a></li>
+        <li><a href="#" onclick="showSection('servicos')"><i class="fa-solid fa-wrench"></i>Serviços</a></li>
+        <li><a href="#" onclick="showSection('ordens')"><i class="fa-solid fa-clipboard"></i>Ordens</a></li>
+        <li><a href="#" onclick="showSection('configuracoes')"><i class="fa-solid fa-gear"></i>Configurações</a></li>
+        <li><a href="#" onclick="showSection('usuario')"><i class="fa-solid fa-user"></i>Usuário</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- --------------------------------------------------------------------------------------------------------------- -->
+
+
+  <div class="main-content">
+
+    <header class="main-header">
+      <button class="menu-btn" onclick="toggleMenu()">☰</button>
+      <h2 id="page-title">Oficina Digital</h2>
+      <span id="current-date"></span>
+    </header>
+
+    <main>
+
+      <div id="dashboard-section" class="section">
+        <div class="grid grid-5 dashboard-cards">
+
+          <div class="card dashboard-card">
+            <div class="icon blue"><i class="fa-solid fa-users"></i></div>
+            <div class="info">
+              <span>CLIENTES</span>
+              <h2 id="total-clientes">0</h2>
+            </div>
+          </div>
+
+          <div class="card dashboard-card">
+            <div class="icon green"><i class="fa-solid fa-motorcycle"></i></div>
+            <div class="info">
+              <span>MOTOS</span>
+              <h2 id="total-motos">0</h2>
+            </div>
+          </div>
+
+          <div class="card dashboard-card">
+            <div class="icon purple"><i class="fa-solid fa-gear"></i></div>
+            <div class="info">
+              <span>SERVIÇOS</span>
+              <h2 id="total-servicos">0</h2>
+            </div>
+          </div>
+
+          <div class="card dashboard-card">
+            <div class="icon yellow"><i class="fa-solid fa-file-lines"></i></div>
+            <div class="info">
+              <span>ORDENS</span>
+              <h2 id="total-ordens-abertas">0</h2>
+            </div>
+          </div>
+
+          <div class="card dashboard-card">
+            <div class="icon red"><i class="fa-solid fa-wrench"></i></div>
+            <div class="info">
+              <span>PEÇAS</span>
+              <h2 id="total-pecas">0</h2>
+            </div>
+          </div>
+        </div>
+
+        <div id="Conteudo">
+
+          <div id="ContCard" class="card">
+            <h3> <i style="margin-right: 7px; color: rgb(199, 199, 0);" class="far fa-clock"></i>Ordens Recentes</h3>
+            <br>
+            <hr><br>
+            <h4>Nenhuma ordem de serviço encontrada</h4>
+          </div>
+
+          <div id="ContCard" class="card">
+            <h3> <i style="margin-right: 7px; color: rgb(33, 199, 0);" class="fas fa-chart-line"></i>Estatísticas do Mês
+            </h3>
+            <br>
+            <hr><br>
+
+            <div id="DashEstatistica">
+              <h4>Serviços concluidos</h4>
+              <h4 style="color: rgb(0, 95, 204);">5</h4>
+            </div>
+            <div id="DashEstatistica">
+              <h4>Peças Utilizadas</h4>
+              <h4 style="color: rgb(0, 95, 204);">10</h4>
+            </div>
+            <div id="DashEstatistica">
+              <h4>Receita Total</h4>
+              <h4 style="color: rgb(58, 204, 0);">R$ 1250,00</h4>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+
+
+      <div id="clientes-section" class="section hidden">
+        <div class="card">
+
+          <div id="TitleCard">
+            <h3>Clientes</h3>
+            <button class="btn-blue" href="#" onclick="showSection('CadastroCliente')">Novo Cliente</button>
+          </div>
+
+          <div class="BarraPesquisa">
+            <input type="text" placeholder="Buscar clientes cadastrados..." id="search-input">
+            <button class="search-btn">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </div>
+
+          <div id="TabelaDados">
+            <table>
+              <thead>
+                <tr>
+                  <th>Código</th>
+                  <th>Nome Completo</th>
+                  <th>Email</th>
+                  <th>Telefone</th>
+                  <th>CPF</th>
+                  <th>Endereço</th>
+                  <th>Bairro</th>
+                  <th>Cidade</th>
+                  <th>Estado</th>
+                  <th>CEP</th>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tr>
+                <td>001</td>
+                <td>João Carlos da Silva</td>
+                <td>joao.silva@email.com</td>
+                <td>(15) 99123-4567</td>
+                <td>123.456.789-00</td>
+                <td>Rua das Palmeiras, 123</td>
+                <td>Centro</td>
+                <td>Tatuí</td>
+                <td>SP</td>
+                <td>18270-000</td>
+                <td><a href="#"><i style="color: #2563eb;" class="fa-solid fa-pencil"></i></a></td>
+                <td><a href="#"><i style="color: #dc2626;" class="fa-solid fa-trash"></i></a></td>
+              </tr>
+
+              <tr>
+                <td>002</td>
+                <td>Maria Aparecida Oliveira</td>
+                <td>maria.oliveira@email.com</td>
+                <td>(15) 99876-5432</td>
+                <td>987.654.321-00</td>
+                <td>Av. São Paulo, 456</td>
+                <td>Jardim Santa Rita</td>
+                <td>Itapetininga</td>
+                <td>SP</td>
+                <td>18200-000</td>
+                <td><a href="#"><i style="color: #2563eb;" class="fa-solid fa-pencil"></i></a></td>
+                <td><a href="#"><i style="color: #dc2626;" class="fa-solid fa-trash"></i></a></td>
+              </tr>
+
+              <tr>
+                <td>003</td>
+                <td>Carlos Henrique Souza</td>
+                <td>carlos.souza@email.com</td>
+                <td>(15) 99711-2233</td>
+                <td>456.789.123-00</td>
+                <td>Rua XV de Novembro, 789</td>
+                <td>Vila Angélica</td>
+                <td>Sorocaba</td>
+                <td>SP</td>
+                <td>18035-000</td>
+                <td><a href="#"><i style="color: #2563eb;" class="fa-solid fa-pencil"></i></a></td>
+                <td><a href="#"><i style="color: #dc2626;" class="fa-solid fa-trash"></i></a></td>
+              </tr>
+
+              <tbody id="clientes-table"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+
+
+
+      <div id="motos-section" class="section hidden">
+        <div class="card">
+
+          <div id="TitleCard">
+            <h3>Motos</h3>
+            <button class="btn-blue" href="#" onclick="showSection('CadastroMoto')">Nova Moto</button>
+          </div>
+
+          <div class="BarraPesquisa">
+            <input type="text" placeholder="Buscar motos cadastrados..." id="search-input">
+            <button class="search-btn">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </div>
+
+          <div id="TabelaDados">
+            <table>
+              <thead>
+                <tr>
+                  <th>Código</th>
+                  <th>Placa</th>
+                  <th>Modelo</th>
+                  <th>Marca</th>
+                  <th>Ano</th>
+                  <th>Proprietário</th>
+                  <th>Telefone</th>
+                  <th>E-mail</th>
+                  <th></th>
+                  <th></th>
+                </tr>
+                <tr>
+                  <td>001</td>
+                  <td>ABC1D23</td>
+                  <td>CG 160 Titan</td>
+                  <td>Honda</td>
+                  <td>2021</td>
+                  <td>João Silva</td>
+                  <td>(15) 99123-4567</td>
+                  <td>joao@email.com</td>
+                  <td><a href="#"><i style="color: #2563eb;" class="fa-solid fa-pencil"></i></a></td>
+                  <td><a href="#"><i style="color: #dc2626;" class="fa-solid fa-trash"></i></a></td>
+                </tr>
+
+                <tr>
+                  <td>002</td>
+                  <td>XYZ9K87</td>
+                  <td>Fazer 250</td>
+                  <td>Yamaha</td>
+                  <td>2020</td>
+                  <td>Maria Oliveira</td>
+                  <td>(15) 99876-5432</td>
+                  <td>maria@email.com</td>
+                  <td><a href="#"><i style="color: #2563eb;" class="fa-solid fa-pencil"></i></a></td>
+                  <td><a href="#"><i style="color: #dc2626;" class="fa-solid fa-trash"></i></a></td>
+                </tr>
+
+                <tr>
+                  <td>003</td>
+                  <td>JKL4M56</td>
+                  <td>Biz 125</td>
+                  <td>Honda</td>
+                  <td>2019</td>
+                  <td>Carlos Souza</td>
+                  <td>(15) 99711-2233</td>
+                  <td>carlos@email.com</td>
+                  <td><a href="#"><i style="color: #2563eb;" class="fa-solid fa-pencil"></i></a></td>
+                  <td><a href="#"><i style="color: #dc2626;" class="fa-solid fa-trash"></i></a></td>
+                </tr>
+              </thead>
+              <tbody id="veiculos-table"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+
+
+
+      <div id="pecas-section" class="section hidden">
+        <div class="card">
+
+          <div id="TitleCard">
+            <h3>Peças</h3>
+            <button class="btn-blue" href="#" onclick="showSection('CadastroPecas')">Nova Peça</button>
+          </div>
+
+          <div class="BarraPesquisa">
+            <input type="text" placeholder="Buscar peças cadastradas..." id="search-input">
+            <button class="search-btn">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </div>
+
+          <div id="TabelaDados">
+            <table>
+              <thead>
+                <tr>
+                  <th>Código</th>
+                  <th>Nome</th>
+                  <th>Marca</th>
+                  <th>Preço</th>
+                  <th>Categoria</th>
+                  <th>Estoque</th>
+                  <th>Lozalização</th>
+                  <th>Observações</th>
+                  <th></th>
+                  <th></th>
+                </tr>
+                <tr>
+                <tr>
+                  <td>001</td>
+                  <td>Óleo Motor 10W30</td>
+                  <td>Motul</td>
+                  <td>R$ 45,00</td>
+                  <td>Lubrificantes</td>
+                  <td>25</td>
+                  <td>Prateleira A1</td>
+                  <td>Uso comum em motos 4T, verificar nível antes da troca</td>
+                  <td><a href="#"><i style="color: #2563eb;" class="fa-solid fa-pencil"></i></a></td>
+                  <td><a href="#"><i style="color: #dc2626;" class="fa-solid fa-trash"></i></a></td>
+                </tr>
+
+                <tr>
+                  <td>002</td>
+                  <td>Pastilha de Freio Dianteira</td>
+                  <td>Cobreq</td>
+                  <td>R$ 80,00</td>
+                  <td>Freio</td>
+                  <td>12</td>
+                  <td>Prateleira B2</td>
+                  <td>Compatível com Honda CG 160 e similares</td>
+                  <td><a href="#"><i style="color: #2563eb;" class="fa-solid fa-pencil"></i></a></td>
+                  <td><a href="#"><i style="color: #dc2626;" class="fa-solid fa-trash"></i></a></td>
+                </tr>
+
+                <tr>
+                  <td>003</td>
+                  <td>Vela de Ignição</td>
+                  <td>NGK</td>
+                  <td>R$ 25,00</td>
+                  <td>Ignição</td>
+                  <td>40</td>
+                  <td>Gaveta C3</td>
+                  <td>Modelo padrão para motos 125cc a 160cc</td>
+                  <td><a href="#"><i style="color: #2563eb;" class="fa-solid fa-pencil"></i></a></td>
+                  <td><a href="#"><i style="color: #dc2626;" class="fa-solid fa-trash"></i></a></td>
+                </tr>
+              </thead>
+              <tbody id="pecas-table"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div id="servicos-section" class="section hidden">
+        <div class="card">
+
+          <div id="TitleCard">
+            <h3>Serviços</h3>
+            <button class="btn-blue" href="#" onclick="showSection('CadastroServicos')">Nova Serviço</button>
+          </div>
+
+          <div class="BarraPesquisa">
+            <input type="text" placeholder="Buscar serviços cadastrados..." id="search-input">
+            <button class="search-btn">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </div>
+
+          <div id="TabelaDados">
+            <table>
+              <thead>
+                <tr>
+                  <th>Código</th>
+                  <th>Nome do Serviço</th>
+                  <th>Descrição</th>
+                  <th>Categoria</th>
+                  <th>Tempo Padrão</th>
+                  <th>Preço Padrão</th>
+                  <th>Dificuldade</th>
+                  <th>Tipo</th>
+                  <th>Status</th>
+                  <th>Observações</th>
+                  <th></th>
+                  <th></th>
+                </tr>
+                <tr>
+                  <td>001</td>
+                  <td>Troca de óleo</td>
+                  <td>Substituição do óleo do motor e verificação do nível</td>
+                  <td>Revisão</td>
+                  <td>30 min</td>
+                  <td>R$ 120,00</td>
+                  <td>1</td>
+                  <td>Preventivo</td>
+                  <td>Ativo</td>
+                  <td>Recomendado a cada 3.000 km</td>
+                  <td><a href="#"><i style="color: #2563eb;" class="fa-solid fa-pencil"></i></a></td>
+                  <td><a href="#"><i style="color: #dc2626;" class="fa-solid fa-trash"></i></a></td>
+                </tr>
+
+                <tr>
+                  <td>002</td>
+                  <td>Troca de pastilha de freio</td>
+                  <td>Substituição das pastilhas e limpeza do sistema de freio</td>
+                  <td>Freio</td>
+                  <td>45 min</td>
+                  <td>R$ 180,00</td>
+                  <td>2</td>
+                  <td>Corretivo</td>
+                  <td>Ativo</td>
+                  <td>Verificar desgaste do disco durante o serviço</td>
+                  <td><a href="#"><i style="color: #2563eb;" class="fa-solid fa-pencil"></i></a></td>
+                  <td><a href="#"><i style="color: #dc2626;" class="fa-solid fa-trash"></i></a></td>
+                </tr>
+
+                <tr>
+                  <td>003</td>
+                  <td>Revisão elétrica</td>
+                  <td>Verificação completa do sistema elétrico e bateria</td>
+                  <td>Elétrica</td>
+                  <td>1h</td>
+                  <td>R$ 150,00</td>
+                  <td>3</td>
+                  <td>Diagnóstico</td>
+                  <td>Ativo</td>
+                  <td>Inclui teste de carga da bateria</td>
+                  <td><a href="#"><i style="color: #2563eb;" class="fa-solid fa-pencil"></i></a></td>
+                  <td><a href="#"><i style="color: #dc2626;" class="fa-solid fa-trash"></i></a></td>
+                </tr>
+              </thead>
+              <tbody id="servicos-table"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+
+      <div id="ordens-section" class="section hidden">
+        <div class="card">
+
+          <div id="TitleCard">
+            <h3>Ordens</h3>
+            <button class="btn-blue" href="#" onclick="showSection('CadastroOrdens')">Nova Ordem</button>
+          </div>
+
+          <div class="BarraPesquisa">
+            <input type="text" placeholder="Buscar ordens cadastrados..." id="search-input">
+            <button class="search-btn">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </div>
+
+          <div id="TabelaDados">
+            <table>
+              <thead>
+                <tr>
+                  <th>Código</th>
+                  <th>Data Abertura</th>
+                  <th>Cliente</th>
+                  <th>Moto</th>
+                  <th>Placa</th>
+                  <th>Serviços</th>
+                  <th>Peças</th>
+                  <th>Status</th>
+                  <th>Prioridade</th>
+                  <th>Mecânico</th>
+                  <th>Valor Total</th>
+                  <th>Conclusão</th>
+                  <th></th>
+                  <th></th>
+                </tr>
+                <tr>
+                  <td>001</td>
+                  <td>28/04/2026</td>
+                  <td>João Silva</td>
+                  <td>Honda CG 160</td>
+                  <td>ABC1D23</td>
+                  <td>Troca de óleo</td>
+                  <td>Óleo 10W30, Filtro</td>
+                  <td>Finalizado</td>
+                  <td>Média</td>
+                  <td>Carlos Mecânico</td>
+                  <td>R$ 120,00</td>
+                  <td>28/04/2026</td>
+                </tr>
+
+                <tr>
+                  <td>002</td>
+                  <td>27/04/2026</td>
+                  <td>Maria Oliveira</td>
+                  <td>Yamaha Fazer 250</td>
+                  <td>XYZ9K87</td>
+                  <td>Troca de pastilha de freio</td>
+                  <td>Pastilha dianteira</td>
+                  <td>Em andamento</td>
+                  <td>Alta</td>
+                  <td>José Mecânico</td>
+                  <td>R$ 180,00</td>
+                  <td>-</td>
+                </tr>
+
+                <tr>
+                  <td>003</td>
+                  <td>26/04/2026</td>
+                  <td>Carlos Souza</td>
+                  <td>Honda Biz 125</td>
+                  <td>JKL4M56</td>
+                  <td>Revisão elétrica</td>
+                  <td>Bateria, Fusível</td>
+                  <td>Aberto</td>
+                  <td>Baixa</td>
+                  <td>Marcos Mecânico</td>
+                  <td>R$ 150,00</td>
+                  <td>-</td>
+                </tr>
+              </thead>
+              <tbody id="ordens-table"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+      <div id="configuracoes-section" class="section hidden">
+        <div class="card">
+
+          <div id="TitleCard" style="margin-bottom: 15px;">
+            <h3>Configurações</h3>
+          </div>
+          <h3 style="margin-bottom:10px;">Backup & Dados</h3>
+          <button class="btn-blue" onclick="exportBackup()">Exportar Backup</button>
+          <button class="btn-green" onclick="importBackup()">Importar Backup</button>
+          <!-- <button class="btn-red" onclick="confirmClearDatabase()">Limpar Banco de Dados</button> -->
+          <br><br>
+          <div style="color: rgb(165, 135, 0); border-style: solid; border-width: thin; padding: 10px;">
+            <h4><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Informações Importantes</h4>
+            Exporte regularmente seus dados como backup <br>
+            Importar substituirá todos os dados atuais <br>
+            Limpar banco é uma ação IRREVERSÍVEL <br><br>
+          </div>
+        </div>
+      </div>
+
+
+      <div id="usuario-section" class="section hidden">
+        <div class="card">
+
+          <div id="TitleCard" style="margin-bottom: 15px;">
+            <h3>Usuário</h3>
+          </div>
+
+          <div id="userinfo">
+            <p>Usuário: Alex Tavella</p>
+            <p>Perfil: Admin</p>
+            <p>Email: alextavella@gmail.com</p>
+            <p>Senha expira em: 22/09/26</p>
+          </div>
+
+          <button class="btn-green">Trocar Senha</button>
+          <button class="btn-blue"><a style="text-decoration: none; color: white;" href="../index.html">Trocar de
+              conta</a></button>
+          <button class="btn-red"><a style="text-decoration: none; color: white;"
+              href="../index.html">Logout</a></button>
+
+        </div>
+      </div>
+
+
+      <!-- ------------------------------------------------ CADASTROS ------------------------------------------------ -->
+
+      <!-- ----- Cliente ----- -->
+
+      <div id="CadastroCliente-section" class="section hidden">
+        <div class="card form-card">
+
+          <div class="form-header">
+            <h2>Cadastrar Cliente</h2>
+            <p>Preencha as informações abaixo</p>
+          </div>
+
+          <form id="clientes-form">
+
+            <div class="form-grid">
+
+              <div class="form-group">
+                <label>Nome Completo</label>
+                <input type="text" id="cliente-nome" required>
+              </div>
+
+              <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="cliente-email">
+              </div>
+
+              <div class="form-group">
+                <label>Telefone</label>
+                <input type="text" id="cliente-telefone">
+              </div>
+
+              <div class="form-group">
+                <label>CPF</label>
+                <input type="text" id="cliente-cpf">
+              </div>
+
+              <div class="form-group">
+                <label>Endereço</label>
+                <input type="text" id="cliente-endereco">
+              </div>
+
+              <div class="form-group">
+                <label>Bairro</label>
+                <input type="text" id="cliente-endereco">
+              </div>
+
+              <div class="form-group">
+                <label>Cidade</label>
+                <input type="text" id="cliente-cidade">
+              </div>
+
+              <div class="form-group">
+                <label>Estado</label>
+                <input type="text" id="cliente-estado">
+              </div>
+
+              <div class="form-group">
+                <label>CEP</label>
+                <input type="text" id="cliente-cep">
+              </div>
+
+            </div>
+
+            <div class="form-actions">
+              <button type="button" class="btn-red" onclick="showSection('clientes')">
+                Cancelar
+              </button>
+
+              <button type="reset" class="btn-blue">
+                Limpar
+              </button>
+
+              <button type="submit" class="btn-green">
+                Salvar Cliente
+              </button>
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+
+      <!-- ----- Moto ----- -->
+
+
+      <div id="CadastroMoto-section" class="section hidden">
+        <div class="card form-card">
+
+          <div class="form-header">
+            <h2>Cadastrar Motos</h2>
+            <p>Preencha as informações abaixo</p>
+          </div>
+
+          <form id="motos-form">
+
+            <div class="form-grid">
+              <div class="form-group">
+                <label>Placa</label>
+                <input type="text" id="moto-placa" required>
+              </div>
+
+              <div class="form-group">
+                <label>Modelo</label>
+                <input type="text" id="moto-modelo">
+              </div>
+
+              <div class="form-group">
+                <label>Marca</label>
+                <input type="text" id="moto-marca">
+              </div>
+
+              <div class="form-group">
+                <label>Ano</label>
+                <input type="text" id="moto-ano">
+              </div>
+
+              <div class="form-group">
+                <label>Proprietário</label>
+                <input type="text" id="moto-proprierario-nome">
+              </div>
+              <div class="form-group">
+                <label>Telefone</label>
+                <input type="text" id="moto-proprierario-nome">
+              </div>
+              <div class="form-group">
+                <label>E-mail</label>
+                <input type="text" id="moto-proprierario-nome">
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button type="button" class="btn-red" onclick="showSection('motos')">
+                Cancelar
+              </button>
+
+              <button type="reset" class="btn-blue">
+                Limpar
+              </button>
+
+              <button type="submit" class="btn-green">
+                Salvar Cliente
+              </button>
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+
+
+      <!-- ----- Peças ----- -->
+
+
+      <div id="CadastroPecas-section" class="section hidden">
+        <div class="card form-card">
+
+          <div class="form-header">
+            <h2>Cadastrar Peças</h2>
+            <p>Preencha as informações abaixo</p>
+          </div>
+
+          <form id="pecas-form">
+
+            <div class="form-grid">
+              <div class="form-group">
+                <label>Nome</label>
+                <input type="text" id="peca-nome" required>
+              </div>
+
+              <div class="form-group">
+                <label>Marca</label>
+                <input type="text" id="peca-marca">
+              </div>
+
+              <div class="form-group">
+                <label>Preço</label>
+                <input type="text" id="peca-preço">
+              </div>
+
+              <div class="form-group">
+                <label>Categoria</label>
+                <input type="text" id="peca-categoria">
+              </div>
+
+              <div class="form-group">
+                <label>Estoque</label>
+                <input type="text" id="peca-estoque">
+              </div>
+              <div class="form-group">
+                <label>Localização</label>
+                <input type="text" id="peca-localizacao">
+              </div>
+              <div class="form-group">
+                <label>Observação</label>
+                <input type="text" id="peca-observacao">
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button type="button" class="btn-red" onclick="showSection('pecas')">
+                Cancelar
+              </button>
+
+              <button type="reset" class="btn-blue">
+                Limpar
+              </button>
+
+              <button type="submit" class="btn-green">
+                Salvar Cliente
+              </button>
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+
+
+
+      <!-- ----- Serviços ----- -->
+
+
+      <div id="CadastroServicos-section" class="section hidden">
+        <div class="card form-card">
+
+          <div class="form-header">
+            <h2>Cadastrar Serviços</h2>
+            <p>Preencha as informações abaixo</p>
+          </div>
+
+          <form id="servico-form">
+
+            <div class="form-grid">
+              <div class="form-group">
+                <label>Nome do Serviço</label>
+                <input type="text" id="servico-nome" required>
+              </div>
+
+              <div class="form-group">
+                <label>Descrição</label>
+                <input type="text" id="servico-descricao">
+              </div>
+
+              <div class="form-group">
+                <label>Categoria</label>
+                <input type="text" id="servico-categoria">
+              </div>
+
+              <div class="form-group">
+                <label>Tempo Padrão</label>
+                <input type="text" id="servico-tempo-padrao">
+              </div>
+
+              <div class="form-group">
+                <label>Preço Padrão</label>
+                <input type="text" id="servico-preco-padrao">
+              </div>
+              <div class="form-group">
+                <label>Dificuldade</label>
+                <input type="text" id="servico-dificuldade">
+              </div>
+              <div class="form-group">
+                <label>Tipo</label>
+                <input type="text" id="servico-tipo">
+              </div>
+              <div class="form-group">
+                <label>Status</label>
+                <input type="text" id="servico-status">
+              </div>
+              <div class="form-group">
+                <label>Observação</label>
+                <input type="text" id="servico-observacao">
+              </div>
+
+            </div>
+
+            <div class="form-actions">
+              <button type="button" class="btn-red" onclick="showSection('pecas')">
+                Cancelar
+              </button>
+
+              <button type="reset" class="btn-blue">
+                Limpar
+              </button>
+
+              <button type="submit" class="btn-green">
+                Salvar Cliente
+              </button>
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+
+
+
+
+      <!-- ----- Ordens ----- -->
+
+
+      <div id="CadastroOrdens-section" class="section hidden">
+        <div class="card form-card">
+
+          <div class="form-header">
+            <h2>Cadastrar Ordens</h2>
+            <p>Preencha as informações abaixo</p>
+          </div>
+
+          <form id="servico-form">
+
+            <div class="form-grid">
+              <div class="form-group">
+                <label>Data de Abertura</label>
+                <input type="text" id="ordem-data-abertura" required>
+              </div>
+              <div class="form-group">
+                <label>Cliente</label>
+                <input type="text" id="ordem-cliente">
+              </div>
+              <div class="form-group">
+                <label>Moto</label>
+                <input type="text" id="ordem-moto">
+              </div>
+              <div class="form-group">
+                <label>Placa da Moto</label>
+                <input type="text" id=ordem-placa">
+              </div>
+              <div class="form-group">
+                <label>Serviço Realizado</label>
+                <input type="text" id="ordem-servico">
+              </div>
+              <div class="form-group">
+                <label>Peças Utilizadas</label>
+                <input type="text" id="ordem-pecas">
+              </div>
+              <div class="form-group">
+                <label>Status</label>
+                <input type="text" id="ordem-status">
+              </div>
+              <div class="form-group">
+                <label>Prioridade</label>
+                <input type="text" id="ordem-prioridade">
+              </div>
+              <div class="form-group">
+                <label>Mecânico</label>
+                <input type="text" id="ordem-mecanico">
+              </div>
+              <div class="form-group">
+                <label>Valor Total</label>
+                <input type="text" id="ordem-valor-total">
+              </div>
+              <div class="form-group">
+                <label>Data de Conclusão</label>
+                <input type="text" id="ordem-data-conclusao">
+              </div>
+
+            </div>
+
+            <div class="form-actions">
+              <button type="button" class="btn-red" onclick="showSection('pecas')">
+                Cancelar
+              </button>
+
+              <button type="reset" class="btn-blue">
+                Limpar
+              </button>
+
+              <button type="submit" class="btn-green">
+                Salvar Cliente
+              </button>
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+
+
+
+
+
+
+    </main>
+  </div>
+
+  <script>
+    function showSection(section) {
+      document.querySelectorAll('.section').forEach(s => s.classList.add('hidden'))
+      document.getElementById(section + '-section').classList.remove('hidden')
+      closeMenu()
+    }
+
+    function toggleMenu() {
+      const sidebar = document.getElementById('sidebar')
+      const overlay = document.getElementById('overlay')
+
+      sidebar.classList.toggle('active')
+      overlay.classList.toggle('active')
+    }
+
+    function closeMenu() {
+      document.getElementById('sidebar').classList.remove('active')
+      document.getElementById('overlay').classList.remove('active')
+    }
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768) {
+        document.getElementById('sidebar').classList.remove('active')
+        document.getElementById('overlay').classList.remove('active')
+      }
+    })
+
+    window.onload = () => {
+      if (window.innerWidth <= 768) {
+        document.getElementById('sidebar').classList.remove('active')
+      }
+    }
+  </script>
+
+</body>
+
+</html>
