@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ERP - Oficina Mecânica</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- ------------------------------------------------ Barra Lateral ------------------------------------------------ -->
+
+  <div id="overlay" class="overlay" onclick="closeMenu()"></div>
+
+  <div id="sidebar" class="sidebar hidden-mobile">
+    <div style="height:80px;display:flex;align-items:center;justify-content:center;background:#020617">
+      <img src="../Imagens/IsaiasmotosW.png" style="height:50px;margin-right:10px">
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="Inicio.html"><i class="fa-solid fa-bars"></i>Dashboard</a></li>
+        <li><a href="clientes.html"><i class="fa-solid fa-users icon-black"></i>Clientes</a></li>
+        <li><a href="motos.html"><i class="fa-solid fa-motorcycle"></i>Motos</a></li>
+        <li><a href="pecas.html"><i class="fa-solid fa-gear"></i>Peças</a></li>
+        <li><a href="servicos.html"><i class="fa-solid fa-wrench"></i>Serviços</a></li>
+        <li><a href="ordens.html"><i class="fa-solid fa-clipboard"></i>Ordens</a></li>
+        <li><a href="relatorios.html"><i class="fa-solid fa-file-lines"></i>Relatórios</a></li>
+        <li><a href="usuarios.html"><i class="fa-solid fa-user"></i>Usuário</a></li>
+        <li><a href="configuracoes.html"><i class="fa-solid fa-gear"></i>Configurações</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- --------------------------------------------------------------------------------------------------------------- -->
+
+
+  <div class="main-content">
+
+    <header class="main-header">
+      <button class="menu-btn" onclick="toggleMenu()">☰</button>
+      <h2 id="page-title">Oficina Digital</h2>
+      <span id="current-date"></span>
+    </header>
+
+    <main>
+
+        <div id="pecas-section" class="section">
+            <div class="card">
+    
+              <div id="TitleCard">
+                <h3>Peças</h3>
+                <button class="btn-blue" href="#" onclick="showSection('CadastroPecas')">Nova Peça</button>
+              </div>
+    
+              <div class="BarraPesquisa">
+                <input type="text" placeholder="Buscar peças cadastradas..." id="search-input">
+                <button class="search-btn">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+              </div>
+    
+              <div id="TabelaDados">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Código</th>
+                      <th>Nome</th>
+                      <th>Marca</th>
+                      <th>Preço</th>
+                      <th>Categoria</th>
+                      <th>Estoque</th>
+                      <th>Lozalização</th>
+                      <th>Observações</th>
+                      <th></th>
+                      <th></th>
+                    </tr>
+                    <tr>
+                    <tr>
+                      <td>001</td>
+                      <td>Óleo Motor 10W30</td>
+                      <td>Motul</td>
+                      <td>R$ 45,00</td>
+                      <td>Lubrificantes</td>
+                      <td>25</td>
+                      <td>Prateleira A1</td>
+                      <td>Uso comum em motos 4T, verificar nível antes da troca</td>
+                      <td><a href="#"><i style="color: #2563eb;" class="fa-solid fa-pencil"></i></a></td>
+                      <td><a href="#"><i style="color: #dc2626;" class="fa-solid fa-trash"></i></a></td>
+                    </tr>
+    
+                    <tr>
+                      <td>002</td>
+                      <td>Pastilha de Freio Dianteira</td>
+                      <td>Cobreq</td>
+                      <td>R$ 80,00</td>
+                      <td>Freio</td>
+                      <td>12</td>
+                      <td>Prateleira B2</td>
+                      <td>Compatível com Honda CG 160 e similares</td>
+                      <td><a href="#"><i style="color: #2563eb;" class="fa-solid fa-pencil"></i></a></td>
+                      <td><a href="#"><i style="color: #dc2626;" class="fa-solid fa-trash"></i></a></td>
+                    </tr>
+    
+                    <tr>
+                      <td>003</td>
+                      <td>Vela de Ignição</td>
+                      <td>NGK</td>
+                      <td>R$ 25,00</td>
+                      <td>Ignição</td>
+                      <td>40</td>
+                      <td>Gaveta C3</td>
+                      <td>Modelo padrão para motos 125cc a 160cc</td>
+                      <td><a href="#"><i style="color: #2563eb;" class="fa-solid fa-pencil"></i></a></td>
+                      <td><a href="#"><i style="color: #dc2626;" class="fa-solid fa-trash"></i></a></td>
+                    </tr>
+                  </thead>
+                  <tbody id="pecas-table"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+      <!-- ------------------------------------------------ CADASTROS ------------------------------------------------ -->
+
+      <!-- ----- Peças ----- -->
+
+
+      <div id="CadastroPecas-section" class="section hidden">
+        <div class="card form-card">
+
+          <div class="form-header">
+            <h2>Cadastrar Peças</h2>
+            <p>Preencha as informações abaixo</p>
+          </div>
+
+          <form id="pecas-form">
+
+            <div class="form-grid">
+              <div class="form-group">
+                <label>Nome</label>
+                <input type="text" id="peca-nome" required>
+              </div>
+
+              <div class="form-group">
+                <label>Marca</label>
+                <input type="text" id="peca-marca">
+              </div>
+
+              <div class="form-group">
+                <label>Preço</label>
+                <input type="text" id="peca-preço">
+              </div>
+
+              <div class="form-group">
+                <label>Categoria</label>
+                <input type="text" id="peca-categoria">
+              </div>
+
+              <div class="form-group">
+                <label>Estoque</label>
+                <input type="text" id="peca-estoque">
+              </div>
+              <div class="form-group">
+                <label>Localização</label>
+                <input type="text" id="peca-localizacao">
+              </div>
+              <div class="form-group">
+                <label>Observação</label>
+                <input type="text" id="peca-observacao">
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button type="button" class="btn-red" onclick="showSection('pecas')">
+                Cancelar
+              </button>
+
+              <button type="reset" class="btn-blue">
+                Limpar
+              </button>
+
+              <button type="submit" class="btn-green">
+                Salvar Cliente
+              </button>
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+      
+    </main>
+  </div>
+
+  <script>
+    function showSection(section) {
+      document.querySelectorAll('.section').forEach(s => s.classList.add('hidden'))
+      document.getElementById(section + '-section').classList.remove('hidden')
+      closeMenu()
+    }
+
+    function toggleMenu() {
+      const sidebar = document.getElementById('sidebar')
+      const overlay = document.getElementById('overlay')
+
+      sidebar.classList.toggle('active')
+      overlay.classList.toggle('active')
+    }
+
+    function closeMenu() {
+      document.getElementById('sidebar').classList.remove('active')
+      document.getElementById('overlay').classList.remove('active')
+    }
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768) {
+        document.getElementById('sidebar').classList.remove('active')
+        document.getElementById('overlay').classList.remove('active')
+      }
+    })
+
+    window.onload = () => {
+      if (window.innerWidth <= 768) {
+        document.getElementById('sidebar').classList.remove('active')
+      }
+    }
+  </script>
+
+</body>
+
+</html>
