@@ -868,6 +868,14 @@ tr:hover {
     grid-template-columns: 1fr;
   }
 
+  .config-card ,.usuario-card, .usuario-stats, .usuario-config-card, .usuario-acoes-card{
+    margin-bottom: 30px;
+  }
+
+  .config-mini-card {
+    margin-bottom: 10px;
+  }
+
 }
 
 @media(max-width:768px) {
@@ -955,6 +963,10 @@ tr:hover {
 
   .config-topo button {
     width: 100%;
+  }
+
+  .config-top-card {
+    margin-bottom: 30px;
   }
 }
 
